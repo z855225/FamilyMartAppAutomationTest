@@ -15,10 +15,10 @@
 
 #測試流程圖
 * 使用 Page Object Pattern 規劃
-* ![flow](/doc/AppFlow.png)
+* ![AppFlow](/doc/AppFlow.png)
 
 #結構
-* ![tree](/doc/AppTree.png)
+* ![AppTree](/doc/AppTree.png)
 
 #DEMO
 * [VIDEO](https://youtu.be/yt8GzA9gJ8E)
