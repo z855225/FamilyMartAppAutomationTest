@@ -24,19 +24,18 @@ public class iOSAppCheckoutTest {
 	  
 	  @BeforeTest
 	    public void beforeTest() throws InterruptedException, MalformedURLException {
-	    	report = new ExtentReports("/Users/River_Lin/Documents/workspace/testreport/FamilyMartiOSAppReport.html", false);
-	    	test = report.startTest("Checkout Test", "首頁 > 人氣推薦商品 > 第一個產品 > 立即結帳 > 選取超商取貨付款 > 填寫資料，並選取任一個門市");
+	        report = new ExtentReports("/Users/River_Lin/Documents/workspace/testreport/FamilyMartiOSAppReport.html", false);
+	        test = report.startTest("Checkout Test", "首頁 > 人氣推薦商品 > 第一個產品 > 立即結帳 > 選取超商取貨付款 > 填寫資料，並選取任一個門市");
 
 	    	DesiredCapabilities capabilities = new DesiredCapabilities();
-			capabilities.setCapability("platformName", "iOS");
-			capabilities.setCapability("platformVersion", "10.3.2");
-			capabilities.setCapability("deviceName", "River iPhone");
-			capabilities.setCapability("udid", "YourUDID");
-			capabilities.setCapability("app", "/Users/River_Lin/Documents/workspace/全家行動購 2.19.6.ipa");
-			capabilities.setCapability("automationName", "XCUITest");
-		    driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
-		    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-	    	
+		capabilities.setCapability("platformName", "iOS");
+		capabilities.setCapability("platformVersion", "10.3.2");
+		capabilities.setCapability("deviceName", "River iPhone");
+		capabilities.setCapability("udid", "YourUDID");
+		capabilities.setCapability("app", "/Users/River_Lin/Documents/workspace/全家行動購 2.19.6.ipa");
+		capabilities.setCapability("automationName", "XCUITest");
+		driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);	
 	    }
 		
 	    @Test
@@ -68,22 +67,22 @@ public class iOSAppCheckoutTest {
 		    	test.log(LogStatus.PASS, "The Test Result: PASS");
 		        Thread.sleep(1000);
 		        String fileDir = Actions.takeScreenShot(driver);
-			    test.log(LogStatus.INFO, "image: " +  test.addScreenCapture(fileDir));
+			test.log(LogStatus.INFO, "image: " +  test.addScreenCapture(fileDir));
 	    	}
+		    
 	    	catch(Exception e) {
-		    	  System.out.println("error tset");
-		    	  test.log(LogStatus.FAIL, e.getMessage());
-		    	  String fileDir = Actions.takeScreenShot(driver);
-		    	  test.log(LogStatus.INFO, "error image: " +  test.addScreenCapture(fileDir));
-
-		      }
+		    	System.out.println("error tset");
+		    	test.log(LogStatus.FAIL, e.getMessage());
+		    	String fileDir = Actions.takeScreenShot(driver);
+		    	test.log(LogStatus.INFO, "error image: " +  test.addScreenCapture(fileDir));
+	        }
 	    }
 	  
 	    @AfterTest
 	    public void afterTest() {
 	    	report.endTest(test);
-			report.flush();
-		    driver.quit();
+		report.flush();
+		driver.quit();
 	    }
 
 }
